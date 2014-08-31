@@ -28,6 +28,7 @@
 #include <SmartMatrix.h>
 #include <FastLED.h>
 SmartMatrix matrix;
+CRGB *leds;
 #endif
 
 #include "ParticleSys.h"
@@ -44,8 +45,6 @@ Particle_Fixed source;
 Emitter_Fountain emitter(0, 0, 5, &source);
 ParticleSys pSys(numParticles, particles, &emitter);
 PartMatrix pMatrix;
-
-CRGB *leds;
 
 /**
  * Render the particles into a low-resolution matrix
@@ -70,6 +69,7 @@ void drawMatrix(){
     }
 }
 
+#if BOARD == 'm'
 // translates from x, y into an index into the LED array
 int XY(int x, int y) {
     if (y >= MATRIX_HEIGHT) { y = MATRIX_HEIGHT - 1; }
@@ -79,6 +79,7 @@ int XY(int x, int y) {
 
     return (y * MATRIX_WIDTH) + x;
 }
+#endif
 
 void setup()
 {

@@ -58,12 +58,12 @@ void drawMatrix(){
 #if BOARD == 'm'
             ColorRGB color = pMatrix.matrix[x][y];
             leds[XY(x, y)] = CRGB(color.r, color.g, color.b);
-            // matrix.drawPixel(x, y, CRGB(pMatrix.matrix[x][y].r, pMatrix.matrix[x][y].g, pMatrix.matrix[x][y].b));
 #endif
         }
     }
 }
 
+#if BOARD == 'm'
 // translates from x, y into an index into the LED array
 int XY(int x, int y) {
     if (y >= MATRIX_HEIGHT) { y = MATRIX_HEIGHT - 1; }
@@ -73,6 +73,7 @@ int XY(int x, int y) {
 
     return (y * MATRIX_WIDTH) + x;
 }
+#endif
 
 void setup()
 {
