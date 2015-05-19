@@ -18,7 +18,7 @@ FastLEDPartMatrix::FastLEDPartMatrix()
 {
 }
 
-void FastLEDPartMatrix::render(Particle_Abstract particles[], byte numParticles, CRGB *_leds)
+void FastLEDPartMatrix::render(Particle_Abstract particles[], byte numParticles, CRGB *_leds, ps_globals_t *g)
 {
     byte row, col;
     uint16_t dx, dy;
@@ -33,36 +33,36 @@ void FastLEDPartMatrix::render(Particle_Abstract particles[], byte numParticles,
         //generate RGB values for particle
         baseRGB = CHSV(particles[i].hue, 255,255);
 
-        dx = PS_P_RADIUS - (particles[i].x % PS_P_RADIUS);
-        dy = PS_P_RADIUS - (particles[i].y % PS_P_RADIUS);
+        dx = g->res - (particles[i].x % g->res);
+        dy = g->res - (particles[i].y % g->res);
 
         //bottom left
-        col = particles[i].x / PS_P_RADIUS;
-        row = particles[i].y / PS_P_RADIUS;
-        tempVal = ((unsigned long)dx*dy*particles[i].ttl)/PS_P_SURFACE;
+        col = particles[i].x / g->res;
+        row = particles[i].y / g->res;
+        tempVal = ((unsigned long)dx*dy*particles[i].ttl)/g->res2;
         if(tempVal > 255) {tempVal = 255;}
         addColor(col, row, &baseRGB, tempVal, _leds);
 
         //bottom right;
         col++;
-        if (col < PS_PIXELS_X) {
-            tempVal = ((unsigned long)(PS_P_RADIUS-dx)*dy*particles[i].ttl)/PS_P_SURFACE;
+        if (col < g->width) {
+            tempVal = ((unsigned long)(g->res-dx)*dy*particles[i].ttl)/g->res2;
             if(tempVal > 255) {tempVal = 255;}
             addColor(col, row, &baseRGB, tempVal, _leds);
         }
 
         //top right
         row++;
-        if (col < PS_PIXELS_X && row < PS_PIXELS_Y) {
-            tempVal = ((unsigned long)(PS_P_RADIUS-dx)*(PS_P_RADIUS-dy)*particles[i].ttl)/PS_P_SURFACE;
+        if (col < g->width && row < g->height) {
+            tempVal = ((unsigned long)(g->res-dx)*(g->res-dy)*particles[i].ttl)/g->res2;
             if(tempVal > 255) {tempVal = 255;}
             addColor(col, row, &baseRGB, tempVal, _leds);
         }
 
         //top left
         col--;
-        if (row < PS_PIXELS_Y) {
-            tempVal = ((unsigned long)dx*(PS_P_RADIUS-dy)*particles[i].ttl)/PS_P_SURFACE;
+        if (row < g->height) {
+            tempVal = ((unsigned long)dx*(g->res-dy)*particles[i].ttl)/g->res2;
             if(tempVal > 255) {tempVal = 255;}
             addColor(col, row, &baseRGB, tempVal, _leds);
         }
@@ -78,32 +78,32 @@ void FastLEDPartMatrix::addColor(byte col, byte row, CRGB *colorRGB, byte value,
     _leds[XY(col,row)] += newColor;
 }
 
-void FastLEDPartMatrix::reset(CRGB *_leds)
+void FastLEDPartMatrix::reset(CRGB *_leds, ps_globals_t *g)
 {
     //init all pixels to black
     //memset8(_leds,0,sizeof(CRGB)*PS_PIXELS_X*PS_PIXELS_Y);
-    for(byte y=0; y<PS_PIXELS_Y; y++) {
-        for(byte x=0; x<PS_PIXELS_X; x++) {
+    for(byte y=0; y<g->height; y++) {
+        for(byte x=0; x<g->width; x++) {
             _leds[XY(x,y)] = CRGB(0,0,0);
         }
     }
 }
 
-void FastLEDPartMatrix::fade(CRGB *_leds)
+void FastLEDPartMatrix::fade(CRGB *_leds, ps_globals_t *g)
 {
     //fade all pixels
-    for (byte y=0; y<PS_PIXELS_Y; y++) {
-        for(byte x=0; x<PS_PIXELS_X; x++) {
+    for (byte y=0; y<g->height; y++) {
+        for(byte x=0; x<g->width; x++) {
             _leds[XY(x,y)].fadeToBlackBy(128);
         }
     }
 }
 
-void FastLEDPartMatrix::fadeBy(byte amount, CRGB *_leds)
+void FastLEDPartMatrix::fadeBy(byte amount, CRGB *_leds, ps_globals_t *g)
 {
     //fade all pixels
-    for (byte y=0; y<PS_PIXELS_Y; y++) {
-        for(byte x=0; x<PS_PIXELS_X; x++) {
+    for (byte y=0; y<g->height; y++) {
+        for(byte x=0; x<g->width; x++) {
             _leds[XY(x,y)].fadeToBlackBy(amount);
         }
     }

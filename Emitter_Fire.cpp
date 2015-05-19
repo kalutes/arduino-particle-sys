@@ -13,8 +13,8 @@
 
 #include "Emitter_Fire.h"
 
-byte Emitter_Fire::baseHue = 128; //blues
-byte Emitter_Fire::maxTtl = 128;
+uint8_t Emitter_Fire::baseHue = 128; //blues
+uint8_t Emitter_Fire::maxTtl = 128;
 
 Emitter_Fire::Emitter_Fire()
 {
@@ -22,18 +22,18 @@ Emitter_Fire::Emitter_Fire()
     cycleHue = false;
 }
 
-void Emitter_Fire::update()
+void Emitter_Fire::update(ps_globals_t *g)
 {
 }
 
-void Emitter_Fire::emit(Particle_Abstract *particle)
+void Emitter_Fire::emit(Particle_Abstract *particle, ps_globals_t *g)
 {
     counter++;
     if (cycleHue) baseHue = (counter>>2)%240;
 
-    if (counter & 0x01 == 0) {
-        particle->x = random(PS_MAX_X >> 2, 3 * (PS_MAX_X >> 2));
-        switch (map(particle->x, 0, PS_MAX_X, 0, 9)) {  // map value of x from full range to range of 0-8
+    if ((counter & 0x01) == 0) {
+        particle->x = random(g->max_x >> 2, 3 * (g->max_x >> 2));
+        switch (map(particle->x, 0, g->max_x, 0, 9)) {  // map value of x from full range to range of 0-8
         case 0:
         case 7:
             particle->ttl = random(1, 7);
@@ -53,8 +53,8 @@ void Emitter_Fire::emit(Particle_Abstract *particle)
         }
         particle->hue = baseHue+16;
     } else {
-        particle->x = random(PS_MAX_X);
-        switch (map(particle->x, 0, PS_MAX_X, 0, 9) / 32) {  // map value of x from full range to range of 0-8
+        particle->x = random(g->max_x);
+        switch (map(particle->x, 0, g->max_x, 0, 9)) {  // map value of x from full range to range of 0-8
         case 0:
         case 7:
             particle->ttl = random(1, 20);

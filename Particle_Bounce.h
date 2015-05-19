@@ -14,7 +14,7 @@
 #ifndef particle_bounce_h
 #define particle_bounce_h
 
-#include "PsConstants.h"
+#include "PsGlobals.h"
 #include "Particle_Abstract.h"
 
 class Particle_Bounce : public Particle_Abstract {
@@ -23,7 +23,7 @@ public:
     static int16_t ay; //vertical acceleration
 
     Particle_Bounce();
-    void update(void);
+    void update(ps_globals_t *g);
 };
 
 #endif /* particle_bounce_h */

@@ -17,14 +17,14 @@ byte Particle_Fixed::decayFactor = 10;
 
 Particle_Fixed::Particle_Fixed()
 {
-    isAlive = false;
+    isAlive = 0;
 }
 
-void Particle_Fixed::update(void)
+void Particle_Fixed::update(ps_globals_t *g)
 {
     //age
     if (ttl < decayFactor) {
-        isAlive = false;
+        isAlive = 0;
         return;
     }
     ttl -= decayFactor;

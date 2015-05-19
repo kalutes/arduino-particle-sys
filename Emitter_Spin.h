@@ -16,7 +16,7 @@
 #define emitter_spin_h
 
 #include "Emitter_Abstract.h"
-#include "Arduino.h"
+#include <Arduino.h>
 
 class Emitter_Spin : public Emitter_Abstract {
 public:
@@ -28,8 +28,8 @@ public:
     boolean oscilate; //whether to oscilate radial velocity
     unsigned int counter;
     Emitter_Spin(uint16_t x, uint16_t y, uint16_t r, int16_t rv);
-    void emit(Particle_Abstract * particle);
-    void update();
+    void emit(Particle_Abstract *particle, ps_globals_t *g);
+    void update(ps_globals_t *g);
 private:
     int16_t vx;
     int16_t vy;

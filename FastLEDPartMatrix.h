@@ -16,7 +16,7 @@
 #ifndef fastled_part_matrix_h
 #define fastled_part_matrix_h
 
-#include "PsConstants.h"
+#include "PsGlobals.h"
 #include "Particle_Abstract.h"
 #include <FastLED.h>
 
@@ -26,10 +26,10 @@ class FastLEDPartMatrix {
 public:
 
     FastLEDPartMatrix();
-    void render(Particle_Abstract particles[], byte numParticles, CRGB *_leds);
-    void reset(CRGB *_leds);    //set each pixel to 0
-    void fade(CRGB *_leds);     //divide each pixel by half
-    void fadeBy(byte amount, CRGB *_leds); //substract amount from each pixel
+    void render(Particle_Abstract particles[], byte numParticles, CRGB *_leds, ps_globals_t *g);
+    void reset(CRGB *_leds, ps_globals_t *g);    //set each pixel to 0
+    void fade(CRGB *_leds, ps_globals_t *g);     //divide each pixel by half
+    void fadeBy(byte amount, CRGB *_leds, ps_globals_t *g); //substract amount from each pixel
 
 private:
     void addColor(byte col, byte row, CRGB *rgb, byte value, CRGB *_leds);

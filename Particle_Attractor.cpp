@@ -13,16 +13,16 @@
 
 #include "Particle_Attractor.h"
 
-uint16_t Particle_Attractor::atx = PS_MAX_X/2-(PS_P_RADIUS/2); // default position at center of matrix
-uint16_t Particle_Attractor::aty = PS_MAX_Y/2-(PS_P_RADIUS/2);
+uint16_t Particle_Attractor::atx = 0;
+uint16_t Particle_Attractor::aty = 0;
 int16_t Particle_Attractor::atf = 4;
 
-Particle_Attractor::Particle_Attractor()
+Particle_Attractor::Particle_Attractor(void)
 {
-    isAlive = false;
+    isAlive = 0;
 }
 
-void Particle_Attractor::update(void)
+void Particle_Attractor::update(ps_globals_t *g)
 {
     int16_t dx, dy, tempX, tempY, tempVx, tempVy;
     int16_t acx, acy;
@@ -46,10 +46,10 @@ void Particle_Attractor::update(void)
     tempX = x + tempVx;
     tempY = y + tempVy;
 
-    if (tempX < 0 || tempX > PS_MAX_X){
+    if (tempX < 0 || tempX > g->max_x){
         tempVx = 0;//-tempVx;
     }
-    if (tempY < 0 || tempY > PS_MAX_Y){
+    if (tempY < 0 || tempY > g->max_y){
         tempVy = 0;//-tempVy;
     }
 
@@ -59,11 +59,11 @@ void Particle_Attractor::update(void)
     if (tempVy > 50 || tempVy < -50) vy = random(10)-5;
     else vy = tempVy;
 
-    if (tempX > PS_MAX_X) x = PS_MAX_X;
+    if (tempX > g->max_x) x = g->max_x;
     else if (tempX < 0) x = 0;
     else x = tempX;
 
-    if (tempY > PS_MAX_Y) y = PS_MAX_Y;
+    if (tempY > g->max_y) y = g->max_y;
     else if (tempY < 0) y = 0;
     else y = tempY;
 }

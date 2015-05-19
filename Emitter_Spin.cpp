@@ -25,7 +25,7 @@ Emitter_Spin::Emitter_Spin(uint16_t x, uint16_t y, uint16_t r, int16_t rv)
     counter = 0;
 }
 
-void Emitter_Spin::update()
+void Emitter_Spin::update(ps_globals_t *g)
 {
     static signed char direction = -1;
     float radAngle;
@@ -50,7 +50,7 @@ void Emitter_Spin::update()
     vy = (int16_t)(r * sin(radAngle));
 }
 
-void Emitter_Spin::emit(Particle_Abstract * particle)
+void Emitter_Spin::emit(Particle_Abstract *particle, ps_globals_t *g)
 {
     particle->x = this->x;
     particle->y = this->y;

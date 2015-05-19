@@ -14,20 +14,20 @@
 #ifndef emitter_fire_h
 #define emitter_fire_h
 
-#include "PsConstants.h"
+#include "PsGlobals.h"
 #include "Emitter_Abstract.h"
-#include "Arduino.h"
+#include <Arduino.h>
 
 class Emitter_Fire : public Emitter_Abstract {
 public:
-    static byte baseHue;
-    static byte maxTtl;
-    unsigned int counter;
-    boolean cycleHue;
+    static uint8_t baseHue;
+    static uint8_t maxTtl;
+    uint16_t counter;
+    uint8_t cycleHue;
 
     Emitter_Fire();
-    void emit(Particle_Abstract *particle);
-    void update();
+    void emit(Particle_Abstract *particle, ps_globals_t *g);
+    void update(ps_globals_t *g);
 };
 
 #endif /* emitter_fire_h */

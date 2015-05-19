@@ -22,26 +22,26 @@ Emitter_Side::Emitter_Side(char side)
     this->side = side;
 }
 
-void Emitter_Side::emit(Particle_Abstract * particle)
+void Emitter_Side::emit(Particle_Abstract *particle, ps_globals_t *g)
 {
     counter++;
 
     switch(side) {
     case 't':
-        particle->x = random(PS_MAX_X);
-        particle->y = PS_MAX_X-PS_P_RADIUS;
+        particle->x = random(g->max_x);
+        particle->y = g->max_x-g->res;
         break;
     case 'r':
-        particle->x = PS_MAX_X-PS_P_RADIUS;
-        particle->y = random(PS_MAX_Y);
+        particle->x = g->max_x-g->res;
+        particle->y = random(g->max_y);
         break;
     case 'b':
-        particle->x = random(PS_MAX_X);
+        particle->x = random(g->max_x);
         particle->y = 1;
         break;
     case 'l':
         particle->x = 1;
-        particle->y = random(PS_MAX_Y);
+        particle->y = random(g->max_y);
         break;
     }
 

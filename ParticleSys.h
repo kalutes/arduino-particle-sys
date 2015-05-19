@@ -14,7 +14,7 @@
 #ifndef p_system_h
 #define p_system_h
 
-#include "PsConstants.h"
+#include "PsGlobals.h"
 #include "Particle_Abstract.h"
 #include "Emitter_Abstract.h"
 
@@ -24,11 +24,13 @@
 class ParticleSys {
 public:
     static byte perCycle;
-    byte num;
+    static byte res;
+    static ps_globals_t g;
+    byte numParticles;
     Particle_Abstract *particles;
     Emitter_Abstract *emitter;
 
-    ParticleSys(byte num, Particle_Abstract particles[], Emitter_Abstract *emitter);
+    ParticleSys(uint8_t width, uint8_t height, byte numParticles, Particle_Abstract particles[], Emitter_Abstract *emitter);
     void update();
 
 private:

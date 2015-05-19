@@ -14,13 +14,13 @@
 #ifndef emitter_abstract_h
 #define emitter_abstract_h
 
-#include "Arduino.h"
+#include <Arduino.h>
 #include "Particle_Abstract.h"
 
 class Emitter_Abstract {
 public:
-    virtual void emit(Particle_Abstract * particle);
-    virtual void update(){}
+    virtual void emit(Particle_Abstract *particle, ps_globals_t *g);
+    virtual void update(ps_globals_t *g){}
 };
 
 #endif /* emitter_abstract_h */

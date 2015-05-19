@@ -14,7 +14,7 @@
 #ifndef particle_attractor_h
 #define particle_attractor_h
 
-#include "PsConstants.h"
+#include "PsGlobals.h"
 #include "Particle_Abstract.h"
 
 class Particle_Attractor : public Particle_Abstract {
@@ -23,8 +23,8 @@ public:
     static uint16_t aty; //vertical attractor position
     static int16_t atf;  //attractor force
 
-    Particle_Attractor();
-    void update(void);
+    Particle_Attractor(void);
+    void update(ps_globals_t *g);
 };
 
 #endif /* particle_attractor_h */

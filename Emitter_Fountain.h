@@ -16,7 +16,7 @@
 
 #include "Emitter_Abstract.h"
 #include "Particle_Abstract.h"
-#include "Arduino.h"
+#include <Arduino.h>
 
 class Emitter_Fountain : public Emitter_Abstract {
 public:
@@ -29,8 +29,8 @@ public:
     unsigned int counter;
 
     Emitter_Fountain(int16_t vx, int16_t vy, byte var, Particle_Abstract *source);
-    void emit(Particle_Abstract * particle);
-    void update();
+    void emit(Particle_Abstract *particle, ps_globals_t *g);
+    void update(ps_globals_t *g);
 private:
     byte _hVar;
 };

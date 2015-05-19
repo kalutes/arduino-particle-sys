@@ -14,8 +14,8 @@
 #ifndef particle_abstract_h
 #define particle_abstract_h
 
-#include "PsConstants.h"
-#include "Arduino.h"
+#include "PsGlobals.h"
+#include <Arduino.h>
 
 class Particle_Abstract {
 public:
@@ -23,11 +23,11 @@ public:
     uint16_t y;   //bottom
     int16_t  vx;  //horizontal velocity
     int16_t  vy;  //vertical velocity
-    byte ttl; //time to live
-    byte hue; //hue
-    boolean isAlive; //is alive?
+    uint8_t ttl; //time to live
+    uint8_t hue; //hue
+    uint8_t isAlive; //is alive?
 
-    virtual void update(void);
+    virtual void update(ps_globals_t *g);
 };
 
 #endif /* particle_abstract_h */
