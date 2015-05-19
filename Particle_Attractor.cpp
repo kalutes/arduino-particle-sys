@@ -13,9 +13,9 @@
 
 #include "Particle_Attractor.h"
 
-byte Particle_Attractor::atx = 112;
-byte Particle_Attractor::aty = 112;
-signed char Particle_Attractor::atf = 4;
+uint16_t Particle_Attractor::atx = PS_MAX_X/2-(PS_P_RADIUS/2); // default position at center of matrix
+uint16_t Particle_Attractor::aty = PS_MAX_Y/2-(PS_P_RADIUS/2);
+int16_t Particle_Attractor::atf = 4;
 
 Particle_Attractor::Particle_Attractor()
 {
@@ -24,8 +24,8 @@ Particle_Attractor::Particle_Attractor()
 
 void Particle_Attractor::update(void)
 {
-    int dx, dy, tempX, tempY, tempVx, tempVy;
-    signed char acx, acy;
+    int16_t dx, dy, tempX, tempY, tempVx, tempVy;
+    int16_t acx, acy;
     float mult;
     //age
     //ttl--;
@@ -33,11 +33,11 @@ void Particle_Attractor::update(void)
         isAlive = false;
     }
 
-    dx = (int)atx - x;
-    dy = (int)aty - y;
+    dx = (int16_t)atx - x;
+    dy = (int16_t)aty - y;
     mult = (float)atf/sqrt(dx*dx+dy*dy);
-    acx = (signed char)(mult*dx);
-    acy = (signed char)(mult*dy);
+    acx = (int16_t)(mult*dx);
+    acy = (int16_t)(mult*dy);
 
     //apply acceleration
     tempVx = vx+acx;

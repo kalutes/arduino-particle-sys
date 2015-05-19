@@ -13,8 +13,8 @@
 
 #include "Particle_Bounce.h"
 
-signed char Particle_Bounce::ax = 0;
-signed char Particle_Bounce::ay = 0;
+int16_t Particle_Bounce::ax = 0;
+int16_t Particle_Bounce::ay = 0;
 
 Particle_Bounce::Particle_Bounce()
 {
@@ -31,7 +31,7 @@ void Particle_Bounce::update(void)
     vy = min(vy + ay, PS_MAX_Y);
 
     //apply velocity
-    unsigned int newX, newY;
+    uint16_t newX, newY;
     if (y == 0 || y >= PS_MAX_Y) {
         vy = -1 * vy;
     }

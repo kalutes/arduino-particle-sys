@@ -19,9 +19,9 @@
 
 class Particle_Attractor : public Particle_Abstract {
 public:
-    static byte atx; //horizontal attractor position
-    static byte aty; //vertical attractor position
-    static signed char atf; //attractor force
+    static uint16_t atx; //horizontal attractor position
+    static uint16_t aty; //vertical attractor position
+    static int16_t atf;  //attractor force
 
     Particle_Attractor();
     void update(void);

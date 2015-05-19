@@ -13,8 +13,8 @@
 
 #include "Particle_Std.h"
 
-signed char Particle_Std::ax = 0;
-signed char Particle_Std::ay = 0;
+int16_t Particle_Std::ax = 0;
+int16_t Particle_Std::ay = 0;
 
 Particle_Std::Particle_Std()
 {
@@ -31,14 +31,14 @@ void Particle_Std::update(void)
     vy = min(vy+ay, PS_MAX_Y);
 
     //apply velocity
-    unsigned int newX, newY;
+    uint16_t newX, newY;
     newX = x + vx;
     newY = y + vy;
     if(ttl == 0 || newX < 0 || newX > PS_MAX_X || newY < 0 || newY > PS_MAX_Y) {
         isAlive = false;
     } else {
-        x = (byte)newX;
-        y = (byte)newY;
+        x = newX;
+        y = newY;
     }
 }
 

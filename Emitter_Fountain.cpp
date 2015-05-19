@@ -16,7 +16,7 @@
 byte Emitter_Fountain::minLife = 50;
 byte Emitter_Fountain::maxLife = 250;
 
-Emitter_Fountain::Emitter_Fountain(signed char vx, signed char vy, byte var, Particle_Abstract *source)
+Emitter_Fountain::Emitter_Fountain(int16_t vx, int16_t vy, byte var, Particle_Abstract *source)
 {
     this->vx = vx;
     this->vy = vy;
@@ -40,8 +40,6 @@ void Emitter_Fountain::emit(Particle_Abstract * particle)
     particle->y = source->y;
     particle->vx = vx + random(var)-_hVar;
     particle->vy = vy + random(var)-_hVar;
-
-    //particle->ttl = random(20,100);
     particle->ttl = random(minLife, maxLife);
     particle->hue = counter%255;
     particle->isAlive = true;

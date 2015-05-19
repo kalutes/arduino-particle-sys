@@ -21,19 +21,19 @@
 class Emitter_Spin : public Emitter_Abstract {
 public:
     static byte maxTtl;
-    byte x;   //left
-    byte y;   //bottom
-    byte r;   //radius
-    signed char rv;  //radial velocity
+    uint16_t x;   //left
+    uint16_t y;   //bottom
+    uint16_t r;   //radius
+    int16_t rv;  //radial velocity
     boolean oscilate; //whether to oscilate radial velocity
     unsigned int counter;
-    Emitter_Spin(byte x, byte y, byte r, signed char rv);
+    Emitter_Spin(uint16_t x, uint16_t y, uint16_t r, int16_t rv);
     void emit(Particle_Abstract * particle);
     void update();
 private:
-    signed char vx;
-    signed char vy;
-    signed char tempRv;
+    int16_t vx;
+    int16_t vy;
+    int16_t tempRv;
 };
 
 #endif /* emitter_spin_h */

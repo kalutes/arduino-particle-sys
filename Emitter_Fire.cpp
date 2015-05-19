@@ -31,9 +31,9 @@ void Emitter_Fire::emit(Particle_Abstract *particle)
     counter++;
     if (cycleHue) baseHue = (counter>>2)%240;
 
-    if (counter % 2 == 0) {
+    if (counter & 0x01 == 0) {
         particle->x = random(PS_MAX_X >> 2, 3 * (PS_MAX_X >> 2));
-        switch (particle->x / 32) {
+        switch (map(particle->x, 0, PS_MAX_X, 0, 9)) {  // map value of x from full range to range of 0-8
         case 0:
         case 7:
             particle->ttl = random(1, 7);
@@ -54,7 +54,7 @@ void Emitter_Fire::emit(Particle_Abstract *particle)
         particle->hue = baseHue+16;
     } else {
         particle->x = random(PS_MAX_X);
-        switch (particle->x / 32) {
+        switch (map(particle->x, 0, PS_MAX_X, 0, 9) / 32) {  // map value of x from full range to range of 0-8
         case 0:
         case 7:
             particle->ttl = random(1, 20);

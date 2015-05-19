@@ -19,10 +19,10 @@
 
 class Particle_Abstract {
 public:
-    byte x;   //left
-    byte y;   //bottom
-    signed char vx;  //horizontal velocity
-    signed char vy;  //vertical velocity
+    uint16_t x;   //left
+    uint16_t y;   //bottom
+    int16_t  vx;  //horizontal velocity
+    int16_t  vy;  //vertical velocity
     byte ttl; //time to live
     byte hue; //hue
     boolean isAlive; //is alive?

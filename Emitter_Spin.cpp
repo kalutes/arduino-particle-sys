@@ -15,7 +15,7 @@
 
 byte Emitter_Spin::maxTtl = 100;
 
-Emitter_Spin::Emitter_Spin(byte x, byte y, byte r, signed char rv)
+Emitter_Spin::Emitter_Spin(uint16_t x, uint16_t y, uint16_t r, int16_t rv)
 {
     this->x = x;
     this->y = y;
@@ -46,8 +46,8 @@ void Emitter_Spin::update()
         radAngle = 180-counter*tempRv*(PI/180) ;
     }
     // Convert Polar -> Cartesian
-    vx = (signed char)(r * cos(radAngle));
-    vy = (signed char)(r * sin(radAngle));
+    vx = (int16_t)(r * cos(radAngle));
+    vy = (int16_t)(r * sin(radAngle));
 }
 
 void Emitter_Spin::emit(Particle_Abstract * particle)

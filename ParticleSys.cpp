@@ -26,7 +26,7 @@ void ParticleSys::update()
 {
     cycleRemaining = perCycle;
     emitter->update();
-    for(int i = 0; i<num; i++) {
+    for(byte i=0; i<num; i++) {
         if (!particles[i].isAlive && cycleRemaining > 0) {
             emitter->emit(&particles[i]);
             cycleRemaining--;

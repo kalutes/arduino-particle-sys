@@ -19,8 +19,8 @@
 
 class Particle_Bounce : public Particle_Abstract {
 public:
-    static signed char ax; //horizontal acceleration
-    static signed char ay; //vertical acceleration
+    static int16_t ax; //horizontal acceleration
+    static int16_t ay; //vertical acceleration
 
     Particle_Bounce();
     void update(void);
