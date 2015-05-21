@@ -24,8 +24,16 @@ Emitter_Spin::Emitter_Spin(uint16_t x, uint16_t y, uint16_t r, int16_t rv)
     oscilate = false;
     counter = 0;
 }
+Emitter_Spin::Emitter_Spin(ParticleSysGlobals *g, uint16_t r, int16_t rv) {
+    this->x = g->max_x/2-g->res/2;  // default position at center of particle system
+    this->y = g->max_y/2-g->res/2;
+    this->r = r;
+    this->rv = tempRv = rv;
+    oscilate = false;
+    counter = 0;
+}
 
-void Emitter_Spin::update(ps_globals_t *g)
+void Emitter_Spin::update(ParticleSysGlobals *g)
 {
     static signed char direction = -1;
     float radAngle;
@@ -50,7 +58,7 @@ void Emitter_Spin::update(ps_globals_t *g)
     vy = (int16_t)(r * sin(radAngle));
 }
 
-void Emitter_Spin::emit(Particle_Abstract *particle, ps_globals_t *g)
+void Emitter_Spin::emit(Particle_Abstract *particle, ParticleSysGlobals *g)
 {
     particle->x = this->x;
     particle->y = this->y;

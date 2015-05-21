@@ -28,7 +28,7 @@ public:
     byte ttl;
 
     Emitter_Fixed(uint16_t x, uint16_t y, int16_t vx, int16_t vy, byte ttl);
-    void emit(Particle_Abstract *particle, ps_globals_t *g);
+    void emit(Particle_Abstract *particle, ParticleSysGlobals *g);
 };
 
 #endif /* emitter_fixed_h */

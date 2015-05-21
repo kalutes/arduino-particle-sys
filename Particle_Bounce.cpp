@@ -21,7 +21,7 @@ Particle_Bounce::Particle_Bounce()
     isAlive = 0;
 }
 
-void Particle_Bounce::update(ps_globals_t *g)
+void Particle_Bounce::update(ParticleSysGlobals *g)
 {
     //age
     ttl--;

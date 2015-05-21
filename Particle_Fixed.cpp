@@ -20,7 +20,7 @@ Particle_Fixed::Particle_Fixed()
     isAlive = 0;
 }
 
-void Particle_Fixed::update(ps_globals_t *g)
+void Particle_Fixed::update(ParticleSysGlobals *g)
 {
     //age
     if (ttl < decayFactor) {

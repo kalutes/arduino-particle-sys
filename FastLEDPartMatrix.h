@@ -26,10 +26,10 @@ class FastLEDPartMatrix {
 public:
 
     FastLEDPartMatrix();
-    void render(Particle_Abstract particles[], byte numParticles, CRGB *_leds, ps_globals_t *g);
-    void reset(CRGB *_leds, ps_globals_t *g);    //set each pixel to 0
-    void fade(CRGB *_leds, ps_globals_t *g);     //divide each pixel by half
-    void fadeBy(byte amount, CRGB *_leds, ps_globals_t *g); //substract amount from each pixel
+    void render(Particle_Abstract particles[], byte numParticles, CRGB *_leds, ParticleSysGlobals *g);
+    void reset(CRGB *_leds, ParticleSysGlobals *g);    //set each pixel to 0
+    void fade(CRGB *_leds, ParticleSysGlobals *g);     //divide each pixel by half
+    void fadeBy(byte amount, CRGB *_leds, ParticleSysGlobals *g); //substract amount from each pixel
 
 private:
     void addColor(byte col, byte row, CRGB *rgb, byte value, CRGB *_leds);

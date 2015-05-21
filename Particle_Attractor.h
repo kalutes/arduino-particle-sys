@@ -24,7 +24,7 @@ public:
     static int16_t atf;  //attractor force
 
     Particle_Attractor(void);
-    void update(ps_globals_t *g);
+    void update(ParticleSysGlobals *g);
 };
 
 #endif /* particle_attractor_h */

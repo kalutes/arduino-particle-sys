@@ -18,7 +18,7 @@ FastLEDPartMatrix::FastLEDPartMatrix()
 {
 }
 
-void FastLEDPartMatrix::render(Particle_Abstract particles[], byte numParticles, CRGB *_leds, ps_globals_t *g)
+void FastLEDPartMatrix::render(Particle_Abstract particles[], byte numParticles, CRGB *_leds, ParticleSysGlobals *g)
 {
     byte row, col;
     uint16_t dx, dy;
@@ -78,7 +78,7 @@ void FastLEDPartMatrix::addColor(byte col, byte row, CRGB *colorRGB, byte value,
     _leds[XY(col,row)] += newColor;
 }
 
-void FastLEDPartMatrix::reset(CRGB *_leds, ps_globals_t *g)
+void FastLEDPartMatrix::reset(CRGB *_leds, ParticleSysGlobals *g)
 {
     //init all pixels to black
     //memset8(_leds,0,sizeof(CRGB)*PS_PIXELS_X*PS_PIXELS_Y);
@@ -89,7 +89,7 @@ void FastLEDPartMatrix::reset(CRGB *_leds, ps_globals_t *g)
     }
 }
 
-void FastLEDPartMatrix::fade(CRGB *_leds, ps_globals_t *g)
+void FastLEDPartMatrix::fade(CRGB *_leds, ParticleSysGlobals *g)
 {
     //fade all pixels
     for (byte y=0; y<g->height; y++) {
@@ -99,7 +99,7 @@ void FastLEDPartMatrix::fade(CRGB *_leds, ps_globals_t *g)
     }
 }
 
-void FastLEDPartMatrix::fadeBy(byte amount, CRGB *_leds, ps_globals_t *g)
+void FastLEDPartMatrix::fadeBy(byte amount, CRGB *_leds, ParticleSysGlobals *g)
 {
     //fade all pixels
     for (byte y=0; y<g->height; y++) {

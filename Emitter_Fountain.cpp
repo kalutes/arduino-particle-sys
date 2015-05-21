@@ -26,12 +26,12 @@ Emitter_Fountain::Emitter_Fountain(int16_t vx, int16_t vy, byte var, Particle_Ab
     counter = 0;
 }
 
-void Emitter_Fountain::update(ps_globals_t *g)
+void Emitter_Fountain::update(ParticleSysGlobals *g)
 {
     source->update(g);
 }
 
-void Emitter_Fountain::emit(Particle_Abstract *particle, ps_globals_t *g)
+void Emitter_Fountain::emit(Particle_Abstract *particle, ParticleSysGlobals *g)
 {
     counter++;
     source->update(g);

@@ -21,7 +21,7 @@ class Particle_Fixed : public Particle_Abstract {
 public:
     static byte decayFactor;
     Particle_Fixed();
-    void update(ps_globals_t *g);
+    void update(ParticleSysGlobals *g);
 };
 
 #endif /* particle_fixed_h */

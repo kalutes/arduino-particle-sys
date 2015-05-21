@@ -26,8 +26,8 @@ public:
     uint8_t cycleHue;
 
     Emitter_Fire();
-    void emit(Particle_Abstract *particle, ps_globals_t *g);
-    void update(ps_globals_t *g);
+    void emit(Particle_Abstract *particle, ParticleSysGlobals *g);
+    void update(ParticleSysGlobals *g);
 };
 
 #endif /* emitter_fire_h */

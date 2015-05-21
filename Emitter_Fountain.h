@@ -29,8 +29,8 @@ public:
     unsigned int counter;
 
     Emitter_Fountain(int16_t vx, int16_t vy, byte var, Particle_Abstract *source);
-    void emit(Particle_Abstract *particle, ps_globals_t *g);
-    void update(ps_globals_t *g);
+    void emit(Particle_Abstract *particle, ParticleSysGlobals *g);
+    void update(ParticleSysGlobals *g);
 private:
     byte _hVar;
 };

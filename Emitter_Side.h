@@ -26,7 +26,7 @@ public:
     char side;
 
     Emitter_Side(char side);
-    void emit(Particle_Abstract *particle, ps_globals_t *g);
+    void emit(Particle_Abstract *particle, ParticleSysGlobals *g);
 };
 
 #endif /* emitter_side_h */

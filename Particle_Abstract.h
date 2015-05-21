@@ -27,7 +27,7 @@ public:
     uint8_t hue; //hue
     uint8_t isAlive; //is alive?
 
-    virtual void update(ps_globals_t *g);
+    virtual void update(ParticleSysGlobals *g);
 };
 
 #endif /* particle_abstract_h */

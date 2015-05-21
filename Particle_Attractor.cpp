@@ -22,7 +22,7 @@ Particle_Attractor::Particle_Attractor(void)
     isAlive = 0;
 }
 
-void Particle_Attractor::update(ps_globals_t *g)
+void Particle_Attractor::update(ParticleSysGlobals *g)
 {
     int16_t dx, dy, tempX, tempY, tempVx, tempVy;
     int16_t acx, acy;

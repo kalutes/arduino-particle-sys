@@ -23,7 +23,7 @@ public:
     static int16_t ay; //vertical acceleration
 
     Particle_Bounce();
-    void update(ps_globals_t *g);
+    void update(ParticleSysGlobals *g);
 };
 
 #endif /* particle_bounce_h */

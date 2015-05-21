@@ -21,7 +21,7 @@ Particle_Std::Particle_Std()
     isAlive = 0;
 }
 
-void Particle_Std::update(ps_globals_t *g)
+void Particle_Std::update(ParticleSysGlobals *g)
 {
     //age
     ttl--;

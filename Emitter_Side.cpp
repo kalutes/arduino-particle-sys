@@ -22,7 +22,7 @@ Emitter_Side::Emitter_Side(char side)
     this->side = side;
 }
 
-void Emitter_Side::emit(Particle_Abstract *particle, ps_globals_t *g)
+void Emitter_Side::emit(Particle_Abstract *particle, ParticleSysGlobals *g)
 {
     counter++;
 

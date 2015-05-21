@@ -24,13 +24,12 @@
 class ParticleSys {
 public:
     static byte perCycle;
-    static byte res;
-    static ps_globals_t g;
+    ParticleSysGlobals *g;
     byte numParticles;
     Particle_Abstract *particles;
     Emitter_Abstract *emitter;
 
-    ParticleSys(uint8_t width, uint8_t height, byte numParticles, Particle_Abstract particles[], Emitter_Abstract *emitter);
+    ParticleSys(ParticleSysGlobals *g, byte numParticles, Particle_Abstract particles[], Emitter_Abstract *emitter);
     void update();
 
 private:

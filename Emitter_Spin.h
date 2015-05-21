@@ -28,8 +28,9 @@ public:
     boolean oscilate; //whether to oscilate radial velocity
     unsigned int counter;
     Emitter_Spin(uint16_t x, uint16_t y, uint16_t r, int16_t rv);
-    void emit(Particle_Abstract *particle, ps_globals_t *g);
-    void update(ps_globals_t *g);
+    Emitter_Spin(ParticleSysGlobals *g, uint16_t r, int16_t rv);
+    void emit(Particle_Abstract *particle, ParticleSysGlobals *g);
+    void update(ParticleSysGlobals *g);
 private:
     int16_t vx;
     int16_t vy;
