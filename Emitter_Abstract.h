@@ -19,8 +19,8 @@
 
 class Emitter_Abstract {
 public:
-    virtual void emit(Particle_Abstract *particle, ParticleSysGlobals *g);
-    virtual void update(ParticleSysGlobals *g){}
+    virtual void emit(Particle_Abstract *particle, ParticleSysConfig *g);
+    virtual void update(ParticleSysConfig *g){}
 };
 
 #endif /* emitter_abstract_h */

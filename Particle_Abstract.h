@@ -14,7 +14,7 @@
 #ifndef particle_abstract_h
 #define particle_abstract_h
 
-#include "PsGlobals.h"
+#include "ParticleSysConfig.h"
 #include <Arduino.h>
 
 class Particle_Abstract {
@@ -27,7 +27,7 @@ public:
     uint8_t hue; //hue
     uint8_t isAlive; //is alive?
 
-    virtual void update(ParticleSysGlobals *g);
+    virtual void update(ParticleSysConfig *g);
 };
 
 #endif /* particle_abstract_h */

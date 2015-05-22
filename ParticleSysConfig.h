@@ -11,29 +11,21 @@
 #define PS_GLOBALS_T
 #include <stdint.h>
 
-class ParticleSysGlobals {
+class ParticleSysConfig {
 public:
     uint8_t width;
     uint8_t height;
-    uint8_t res;
-    uint16_t res2;
+    uint8_t res_x;
+    uint8_t res_y;
+    uint16_t res_area;
     uint16_t max_x;
     uint16_t max_y;
-    ParticleSysGlobals(uint8_t width, uint8_t height);
-    ParticleSysGlobals(uint8_t width, uint8_t height, uint8_t res);
+    uint16_t center_x;
+    uint16_t center_y;
+    ParticleSysConfig(uint8_t width, uint8_t height);
+    ParticleSysConfig(uint8_t width, uint8_t height, uint8_t res_x, uint8_t res_y);
 private:
     void calcValues(void);
 };
-
-/*
-struct ps_globals_t {
-    uint8_t  width;
-    uint8_t  height;
-    uint8_t  res;
-    uint16_t res2;
-    uint16_t max_x;
-    uint16_t max_y;
-};
-*/
 
 #endif

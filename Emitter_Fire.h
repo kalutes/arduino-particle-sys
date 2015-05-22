@@ -14,7 +14,6 @@
 #ifndef emitter_fire_h
 #define emitter_fire_h
 
-#include "PsGlobals.h"
 #include "Emitter_Abstract.h"
 #include <Arduino.h>
 
@@ -26,8 +25,8 @@ public:
     uint8_t cycleHue;
 
     Emitter_Fire();
-    void emit(Particle_Abstract *particle, ParticleSysGlobals *g);
-    void update(ParticleSysGlobals *g);
+    void emit(Particle_Abstract *particle, ParticleSysConfig *g);
+    void update(ParticleSysConfig *g);
 };
 
 #endif /* emitter_fire_h */

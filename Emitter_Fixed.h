@@ -14,7 +14,6 @@
 #ifndef emitter_fixed_h
 #define emitter_fixed_h
 
-#include "PsGlobals.h"
 #include "Emitter_Abstract.h"
 #include <Arduino.h>
 
@@ -28,7 +27,7 @@ public:
     byte ttl;
 
     Emitter_Fixed(uint16_t x, uint16_t y, int16_t vx, int16_t vy, byte ttl);
-    void emit(Particle_Abstract *particle, ParticleSysGlobals *g);
+    void emit(Particle_Abstract *particle, ParticleSysConfig *g);
 };
 
 #endif /* emitter_fixed_h */

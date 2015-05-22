@@ -15,7 +15,7 @@
 
 byte ParticleSys::perCycle = 1;
 
-ParticleSys::ParticleSys(ParticleSysGlobals *g, byte numParticles, Particle_Abstract particles[], Emitter_Abstract *emitter)
+ParticleSys::ParticleSys(ParticleSysConfig *g, byte numParticles, Particle_Abstract particles[], Emitter_Abstract *emitter)
 {
     this->g = g;
     this->numParticles = numParticles;

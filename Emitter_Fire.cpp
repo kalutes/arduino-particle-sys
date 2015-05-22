@@ -22,11 +22,11 @@ Emitter_Fire::Emitter_Fire()
     cycleHue = false;
 }
 
-void Emitter_Fire::update(ParticleSysGlobals *g)
+void Emitter_Fire::update(ParticleSysConfig *g)
 {
 }
 
-void Emitter_Fire::emit(Particle_Abstract *particle, ParticleSysGlobals *g)
+void Emitter_Fire::emit(Particle_Abstract *particle, ParticleSysConfig *g)
 {
     counter++;
     if (cycleHue) baseHue = (counter>>2)%240;

@@ -22,17 +22,17 @@ Emitter_Side::Emitter_Side(char side)
     this->side = side;
 }
 
-void Emitter_Side::emit(Particle_Abstract *particle, ParticleSysGlobals *g)
+void Emitter_Side::emit(Particle_Abstract *particle, ParticleSysConfig *g)
 {
     counter++;
 
     switch(side) {
     case 't':
         particle->x = random(g->max_x);
-        particle->y = g->max_x-g->res;
+        particle->y = g->max_y-g->res_y;
         break;
     case 'r':
-        particle->x = g->max_x-g->res;
+        particle->x = g->max_x-g->res_x;
         particle->y = random(g->max_y);
         break;
     case 'b':

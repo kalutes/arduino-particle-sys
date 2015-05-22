@@ -14,7 +14,6 @@
 #ifndef particle_std_h
 #define particle_std_h
 
-#include "PsGlobals.h"
 #include "Particle_Abstract.h"
 
 class Particle_Std : public Particle_Abstract {
@@ -23,7 +22,7 @@ public:
     static int16_t ay; //vertical acceleration
 
     Particle_Std();
-    void update(ParticleSysGlobals *g);
+    void update(ParticleSysConfig *g);
 };
 
 #endif /* particle_std_h */

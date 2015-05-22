@@ -23,7 +23,7 @@ Emitter_Fixed::Emitter_Fixed(uint16_t x, uint16_t y, int16_t vx, int16_t vy, byt
     this->ttl = ttl;
 }
 
-void Emitter_Fixed::emit(Particle_Abstract *particle, ParticleSysGlobals *g)
+void Emitter_Fixed::emit(Particle_Abstract *particle, ParticleSysConfig *g)
 {
     counter++;
 

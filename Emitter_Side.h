@@ -14,7 +14,6 @@
 #ifndef emitter_side_h
 #define emitter_side_h
 
-#include "PsGlobals.h"
 #include "Emitter_Abstract.h"
 #include <Arduino.h>
 
@@ -26,7 +25,7 @@ public:
     char side;
 
     Emitter_Side(char side);
-    void emit(Particle_Abstract *particle, ParticleSysGlobals *g);
+    void emit(Particle_Abstract *particle, ParticleSysConfig *g);
 };
 
 #endif /* emitter_side_h */

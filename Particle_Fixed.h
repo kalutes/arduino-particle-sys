@@ -14,14 +14,13 @@
 #ifndef particle_fixed_h
 #define particle_fixed_h
 
-#include "PsGlobals.h"
 #include "Particle_Abstract.h"
 
 class Particle_Fixed : public Particle_Abstract {
 public:
     static byte decayFactor;
     Particle_Fixed();
-    void update(ParticleSysGlobals *g);
+    void update(ParticleSysConfig *g);
 };
 
 #endif /* particle_fixed_h */

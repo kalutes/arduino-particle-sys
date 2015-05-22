@@ -21,7 +21,7 @@ Particle_Bounce::Particle_Bounce()
     isAlive = 0;
 }
 
-void Particle_Bounce::update(ParticleSysGlobals *g)
+void Particle_Bounce::update(ParticleSysConfig *g)
 {
     //age
     ttl--;
@@ -31,7 +31,6 @@ void Particle_Bounce::update(ParticleSysGlobals *g)
     vy = min(vy + ay, g->max_y);
 
     //apply velocity
-    uint16_t newX, newY;
     if (y == 0 || y >= g->max_y) {
         vy = -1 * vy;
     }

@@ -21,17 +21,19 @@ Particle_Attractor::Particle_Attractor(void)
 {
     isAlive = 0;
 }
+Particle_Attractor::Particle_Attractor(uint16_t atx, uint16_t aty) {
+    this->atx = atx;
+    this->aty = aty;
+    isAlive = 0;
+}
 
-void Particle_Attractor::update(ParticleSysGlobals *g)
+void Particle_Attractor::update(ParticleSysConfig *g)
 {
     int16_t dx, dy, tempX, tempY, tempVx, tempVy;
     int16_t acx, acy;
     float mult;
-    //age
-    //ttl--;
-    if (ttl == 0) {
-        isAlive = false;
-    }
+    
+    //this particle does not age
 
     dx = (int16_t)atx - x;
     dy = (int16_t)aty - y;
@@ -46,25 +48,39 @@ void Particle_Attractor::update(ParticleSysGlobals *g)
     tempX = x + tempVx;
     tempY = y + tempVy;
 
-    if (tempX < 0 || tempX > g->max_x){
-        tempVx = 0;//-tempVx;
+    if (tempX < 0 || tempX > g->max_x) {
+        tempVx = 0;
     }
-    if (tempY < 0 || tempY > g->max_y){
-        tempVy = 0;//-tempVy;
+    if (tempY < 0 || tempY > g->max_y) {
+        tempVy = 0;
     }
 
-    if (tempVx > 50 || tempVx < -50) vx = random(10)-5;
-    else vx = tempVx;
+    if (tempVx > 50 || tempVx < -50) {
+        vx = random(10)-5;
+    } else {
+        vx = tempVx;
+    }
 
-    if (tempVy > 50 || tempVy < -50) vy = random(10)-5;
-    else vy = tempVy;
+    if (tempVy > 50 || tempVy < -50) {
+        vy = random(10)-5;
+    } else {
+        vy = tempVy;
+    }
 
-    if (tempX > g->max_x) x = g->max_x;
-    else if (tempX < 0) x = 0;
-    else x = tempX;
+    if (tempX > g->max_x) {
+        x = g->max_x;
+    } else if (tempX < 0) {
+        x = 0;
+    } else {
+        x = tempX;
+    }
 
-    if (tempY > g->max_y) y = g->max_y;
-    else if (tempY < 0) y = 0;
-    else y = tempY;
+    if (tempY > g->max_y) {
+        y = g->max_y;
+    } else if (tempY < 0) {
+        y = 0;
+    } else {
+        y = tempY;
+    }
 }
 
