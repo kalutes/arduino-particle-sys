@@ -25,10 +25,10 @@ public:
     FastLEDRenderer(ParticleSysConfig *g);
 	FastLEDRenderer(ParticleSysConfig *g, uint8_t left, uint8_t top, uint8_t width, uint8_t height);
 	FastLEDRenderer(ParticleSysConfig *g, uint8_t left, uint8_t top, uint8_t width, uint8_t height, uint8_t crop_left, uint8_t crop_top);
-    void render(Particle_Abstract particles[], byte numParticles, CRGB *_leds, ParticleSysConfig *g);
-    void reset(CRGB *_leds, ParticleSysConfig *g);    //set each pixel to 0
-    void fade(CRGB *_leds, ParticleSysConfig *g);     //divide each pixel by half
-    void fadeBy(byte amount, CRGB *_leds, ParticleSysConfig *g); //substract amount from each pixel
+    void render(ParticleSysConfig *g, Particle_Abstract particles[], byte numParticles, CRGB *_leds);
+    void reset(CRGB *_leds);    //set each pixel to 0
+    void fade(CRGB *_leds);     //divide each pixel by half
+    void fadeBy(byte amount, CRGB *_leds); //substract amount from each pixel
 
 private:
 	uint8_t left,top,width,height,crop_left,crop_top;

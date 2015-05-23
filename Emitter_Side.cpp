@@ -27,26 +27,31 @@ void Emitter_Side::emit(Particle_Abstract *particle, ParticleSysConfig *g)
     counter++;
 
     switch(side) {
-    case 't':
+    case 'b':
         particle->x = random(g->max_x);
         particle->y = g->max_y-g->res_y;
+        particle->vx = 0;
+        particle->vy = random(-4,0);
         break;
     case 'r':
         particle->x = g->max_x-g->res_x;
         particle->y = random(g->max_y);
+        particle->vx = random(-4,0);
+        particle->vy = 0;
         break;
-    case 'b':
+    case 't':
         particle->x = random(g->max_x);
         particle->y = 1;
+        particle->vx = 0;
+        particle->vy = random(1,5);
         break;
     case 'l':
         particle->x = 1;
         particle->y = random(g->max_y);
+        particle->vx = random(1,5);
+        particle->vy = 0;
         break;
     }
-
-    particle->vx = 0;
-    particle->vy = 0;
 
     particle->ttl = random(1, maxTtl);
     particle->hue = baseHue;

@@ -7,6 +7,8 @@
  * (at your option) any later version.
  */
 
+/* Adaptation for FastLED by Gottfried Mayer github.com/fuse314 */
+
 /*
  * FastLEDRenderer.cpp renders a particle system to an RGB matrix
  * Params:
@@ -44,7 +46,7 @@ void FastLEDRenderer::init(ParticleSysConfig *g, uint8_t left, uint8_t top, uint
 
 /* GMA hier - change below ########################################################## */
 
-void FastLEDRenderer::render(Particle_Abstract particles[], byte numParticles, CRGB *_leds, ParticleSysConfig *g) {
+void FastLEDRenderer::render(ParticleSysConfig *g, Particle_Abstract particles[], byte numParticles, CRGB *_leds) {
     byte row, col;
     uint16_t dx, dy;
     unsigned long tempVal;
@@ -112,7 +114,7 @@ void FastLEDRenderer::addColor(byte col, byte row, CRGB *colorRGB, byte value, C
     _leds[XY(left+col,top+row)] += newColor;
 }
 
-void FastLEDRenderer::reset(CRGB *_leds, ParticleSysConfig *g) {
+void FastLEDRenderer::reset(CRGB *_leds) {
     //init all pixels to black
     for(byte y=top; y<top+height; y++) {
         for(byte x=left; x<left+width; x++) {
@@ -121,7 +123,7 @@ void FastLEDRenderer::reset(CRGB *_leds, ParticleSysConfig *g) {
     }
 }
 
-void FastLEDRenderer::fade(CRGB *_leds, ParticleSysConfig *g) {
+void FastLEDRenderer::fade(CRGB *_leds) {
     //fade all pixels
     for (byte y=top; y<top+height; y++) {
         for(byte x=left; x<left+width; x++) {
@@ -130,7 +132,7 @@ void FastLEDRenderer::fade(CRGB *_leds, ParticleSysConfig *g) {
     }
 }
 
-void FastLEDRenderer::fadeBy(byte amount, CRGB *_leds, ParticleSysConfig *g) {
+void FastLEDRenderer::fadeBy(byte amount, CRGB *_leds) {
     //fade all pixels
     for (byte y=top; y<top+height; y++) {
         for(byte x=left; x<left+width; x++) {
