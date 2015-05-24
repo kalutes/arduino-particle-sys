@@ -26,12 +26,13 @@ Any Arduino compatible hardware, but due to RAM usage I recommend something beef
 Examples
 --------
 The following examples are included in the library:
-FlameFastLED: https://youtu.be/pmHItuRvXjg
-GreenFireFastLED: https://youtu.be/ukAbi08XwAk
-MultiFlameFastLED: https://youtu.be/iJiRIr-yuUg
-PainterFastLED: https://youtu.be/3tO_BpcsZSA
-SmokerFastLED: https://youtu.be/Hw3fQnBcnMI
-SpinFastLED: https://youtu.be/XBxegSs1yZs
+
+- FlameFastLED: https://youtu.be/pmHItuRvXjg
+- GreenFireFastLED: https://youtu.be/ukAbi08XwAk
+- MultiFlameFastLED: https://youtu.be/iJiRIr-yuUg
+- PainterFastLED: https://youtu.be/3tO_BpcsZSA
+- SmokerFastLED: https://youtu.be/Hw3fQnBcnMI
+- SpinFastLED: https://youtu.be/XBxegSs1yZs
 
 Notes
 -----
