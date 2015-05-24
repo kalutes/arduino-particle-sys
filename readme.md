@@ -37,7 +37,9 @@ Notes
 -----
 If you are working with a narrow LED Matrix (for example 8 x 32 pixels), the Particle_Attractor tends to suck the source right in his center.
 This can be corrected using one of several ways:
+
 1. use a higher res_y in the ParticleSysConfig class (in the above example use res_x = 32 (default) and res_y = 128 (4 x default)). The particle system then is calculated as a square, but painted in a squished form.
 2. lower the attractor force of the Particle_Attractor (atf - property, the default value is 4)
 3. change the attractor force constantly in the loop, for example: ( source.atf = map(beatsin8(50),0,255,-2,3); // this varies the attractor force between -2 (pushing away) and 3 (attracting) 50 times per minute - see FastLED library for the use of the beatsin8 function...)
+
 I used the first approach in the right side of this video: https://youtu.be/osnOcP0NfYc
