@@ -42,6 +42,7 @@ void FastLEDRenderer::init(ParticleSysConfig *g, uint8_t left, uint8_t top, uint
 	this->height = height;
 	this->crop_left = crop_left;
 	this->crop_top = crop_top;
+    this->globalBrightness = 255;
 }
 
 /* GMA hier - change below ########################################################## */
@@ -49,7 +50,7 @@ void FastLEDRenderer::init(ParticleSysConfig *g, uint8_t left, uint8_t top, uint
 void FastLEDRenderer::render(ParticleSysConfig *g, Particle_Abstract particles[], byte numParticles, CRGB *_leds) {
     byte row, col;
     uint16_t dx, dy;
-    unsigned long tempVal;
+    uint8_t tempVal;
     CRGB baseRGB;
 
     //go over particles and update matrix cells on the way
@@ -74,36 +75,42 @@ void FastLEDRenderer::render(ParticleSysConfig *g, Particle_Abstract particles[]
         //bottom left
         col = part_x / g->res_x;
         row = part_y / g->res_y;
-        tempVal = ((unsigned long)dx*dy*particles[i].ttl)/g->res_area;
-        if(tempVal > 255) {tempVal = 255;}
+        tempVal = calcTempVal(g,dx,dy,particles[i].ttl);
         addColor(col, row, &baseRGB, tempVal, _leds);
 
         //bottom right;
         col++;
         if (col < g->width) {
-            tempVal = ((unsigned long)(g->res_x-dx)*dy*particles[i].ttl)/g->res_area;
-            if(tempVal > 255) {tempVal = 255;}
+            tempVal = calcTempVal(g,(g->res_x-dx),dy,particles[i].ttl);
             addColor(col, row, &baseRGB, tempVal, _leds);
         }
 
         //top right
         row++;
         if (col < g->width && row < g->height) {
-            tempVal = ((unsigned long)(g->res_x-dx)*(g->res_y-dy)*particles[i].ttl)/g->res_area;
-            if(tempVal > 255) {tempVal = 255;}
+            tempVal = calcTempVal(g,(g->res_x-dx),(g->res_y-dy),particles[i].ttl);
             addColor(col, row, &baseRGB, tempVal, _leds);
         }
 
         //top left
         col--;
         if (row < g->height) {
-            tempVal = ((unsigned long)dx*(g->res_y-dy)*particles[i].ttl)/g->res_area;
-            if(tempVal > 255) {tempVal = 255;}
+            tempVal = calcTempVal(g,dx,(g->res_y-dy),particles[i].ttl);
             addColor(col, row, &baseRGB, tempVal, _leds);
         }
     }
 }
 
+uint8_t FastLEDRenderer::calcTempVal(ParticleSysConfig *g, uint16_t dx, uint16_t dy, uint8_t ttl) {
+    uint8_t _ttl = ttl;
+    if(globalBrightness < 255) {
+        _ttl = scale8(_ttl,globalBrightness);
+    }
+    unsigned long r = ((unsigned long)dx*dy*_ttl)/g->res_area;
+    if(r > 255)
+        return 255;
+    return r;
+}
 
 void FastLEDRenderer::addColor(byte col, byte row, CRGB *colorRGB, byte value, CRGB *_leds) {
     if(col >= width || row >= height) // check if pixel is outside of the render area

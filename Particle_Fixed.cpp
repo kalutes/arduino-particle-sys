@@ -19,6 +19,13 @@ Particle_Fixed::Particle_Fixed()
 {
     isAlive = 0;
 }
+Particle_Fixed::Particle_Fixed(uint16_t x, uint16_t y) {
+    this->x = x;
+    this->y = y;
+    this->vx = 0;
+    this->vy = 0;
+    this->isAlive = 0;
+}
 
 void Particle_Fixed::update(ParticleSysConfig *g)
 {

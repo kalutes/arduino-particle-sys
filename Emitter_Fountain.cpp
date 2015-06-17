@@ -23,6 +23,19 @@ Emitter_Fountain::Emitter_Fountain(int16_t vx, int16_t vy, byte var, Particle_Ab
     this->var = var;
     this->_hVar = (var>>1);
     this->source = source;
+    _constVel = 0;
+    counter = 0;
+    
+}
+Emitter_Fountain::Emitter_Fountain(uint16_t constVel, Particle_Abstract *source)
+{
+    this->vx = 0;
+    this->vy = 0;
+    this->var = 0;
+    if(constVel > 32767) { constVel = 32767; }
+    _constVel = constVel;
+    this->_hVar = (_constVel<<1);
+    this->source = source;
     counter = 0;
 }
 
@@ -38,8 +51,14 @@ void Emitter_Fountain::emit(Particle_Abstract *particle, ParticleSysConfig *g)
 
     particle->x = source->x;
     particle->y = source->y;
-    particle->vx = vx + random(var)-_hVar;
-    particle->vy = vy + random(var)-_hVar;
+    if(_constVel > 0) {
+        particle->vx = random(_hVar)-_constVel;
+        particle->vy = sqrt(pow(_constVel,2)-pow(particle->vx,2));
+        if(random(8)<3) { particle->vy=-particle->vy; }
+    } else {
+        particle->vx = vx + random(var)-_hVar;
+        particle->vy = vy + random(var)-_hVar;
+    }
     particle->ttl = random(minLife, maxLife);
     particle->hue = counter%255;
     particle->isAlive = true;

@@ -29,10 +29,12 @@ public:
     unsigned int counter;
 
     Emitter_Fountain(int16_t vx, int16_t vy, byte var, Particle_Abstract *source);
+    Emitter_Fountain(uint16_t constVel, Particle_Abstract *source);
     void emit(Particle_Abstract *particle, ParticleSysConfig *g);
     void update(ParticleSysConfig *g);
 private:
-    byte _hVar;
+    uint16_t _hVar;
+    uint16_t _constVel;
 };
 
 #endif /* emitter_fountain_h */

@@ -20,6 +20,7 @@ class Particle_Fixed : public Particle_Abstract {
 public:
     static byte decayFactor;
     Particle_Fixed();
+    Particle_Fixed(uint16_t x, uint16_t y);
     void update(ParticleSysConfig *g);
 };
 

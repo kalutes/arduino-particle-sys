@@ -29,11 +29,12 @@ public:
     void reset(CRGB *_leds);    //set each pixel to 0
     void fade(CRGB *_leds);     //divide each pixel by half
     void fadeBy(byte amount, CRGB *_leds); //substract amount from each pixel
-
+    uint8_t globalBrightness;
 private:
 	uint8_t left,top,width,height,crop_left,crop_top;
 	void init(ParticleSysConfig *g, uint8_t left, uint8_t top, uint8_t width, uint8_t height, uint8_t crop_left, uint8_t crop_top);
     void addColor(byte col, byte row, CRGB *rgb, byte value, CRGB *_leds);
+    uint8_t calcTempVal(ParticleSysConfig *g, uint16_t dx, uint16_t dy, uint8_t ttl);
 };
 
 // we need to declare this function here, otherwise there are errors while compiling...
