@@ -23,8 +23,11 @@ public:
     static byte maxTtl;
     unsigned int counter;
     char side;
+    uint8_t minVelocity;
+    uint8_t maxVelocity;
 
     Emitter_Side(char side);
+    Emitter_Side(char side, uint8_t minVelocity, uint8_t maxVelocity);
     void emit(Particle_Abstract *particle, ParticleSysConfig *g);
 };
 

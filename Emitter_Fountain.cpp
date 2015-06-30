@@ -60,6 +60,6 @@ void Emitter_Fountain::emit(Particle_Abstract *particle, ParticleSysConfig *g)
         particle->vy = vy + random(var)-_hVar;
     }
     particle->ttl = random(minLife, maxLife);
-    particle->hue = counter%255;
+    particle->hue = (counter/2)%255;
     particle->isAlive = true;
 }
