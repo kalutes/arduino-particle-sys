@@ -27,8 +27,10 @@ void Particle_Std::update(ParticleSysConfig *g)
     ttl--;
 
     //apply acceleration
-    vx = min(vx+ax, g->max_x);
-    vy = min(vy+ay, g->max_y);
+    int max_x = g->max_x;
+    int max_y = g->max_y;
+    vx = min(vx+ax, max_x);
+    vy = min(vy+ay, max_y);
 
     //apply velocity
     uint16_t newX, newY;

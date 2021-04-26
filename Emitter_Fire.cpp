@@ -32,48 +32,13 @@ void Emitter_Fire::emit(Particle_Abstract *particle, ParticleSysConfig *g)
     if (cycleHue) baseHue = (counter>>2)%240;
 
     if ((counter & 0x01) == 0) {
-        particle->x = random(g->max_x/4, 3 * (g->max_x/4));
-        switch (map(particle->x, 0, g->max_x, 0, 9)) {  // map value of x from full range to range of 0-8
-        case 0:
-        case 7:
-            particle->ttl = random(1, 7);
-            break;
-        case 1:
-        case 6:
-            particle->ttl = random(5, 14);
-            break;
-        case 2:
-        case 5:
-            particle->ttl = random(15, 21);
-            break;
-        case 3:
-        case 4:
-            particle->ttl = random(25, 28);
-            break;
-        }
         particle->hue = baseHue+16;
     } else {
-        particle->x = random(g->res_x,g->max_x-g->res_x);
-        switch (map(particle->x, 0, g->max_x, 0, 9)) {  // map value of x from full range to range of 0-8
-        case 0:
-        case 7:
-            particle->ttl = random(1, 20);
-            break;
-        case 1:
-        case 6:
-            particle->ttl = random(5, 40);
-            break;
-        case 2:
-        case 5:
-            particle->ttl = random(20, 70);
-            break;
-        case 3:
-        case 4:
-            particle->ttl = random(40, 100);
-            break;
-        }
         particle->hue = baseHue;
     }
+ 
+    particle->x = random(0, g->max_x);
+    particle->ttl = random(1, 100);
 
     particle->y = g->max_y-1;
 

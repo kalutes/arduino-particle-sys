@@ -27,8 +27,10 @@ void Particle_Bounce::update(ParticleSysConfig *g)
     ttl--;
 
     //apply acceleration
-    vx = min(vx + ax, g->max_x);
-    vy = min(vy + ay, g->max_y);
+    int max_x = g->max_x;
+    int max_y = g->max_y;
+    vx = min(vx + ax, max_x);
+    vy = min(vy + ay, max_y);
 
     //apply velocity
     if (y == 0 || y >= g->max_y) {
@@ -40,8 +42,8 @@ void Particle_Bounce::update(ParticleSysConfig *g)
     if (ttl == 0 || (vx == 0 && vy == 0)) {
         isAlive = 0;
     } else {
-        x = min(max(x + vx, 0), g->max_x);
-        y = min(max(y + vy, 0), g->max_y);
+        x = min(max(x + vx, 0), max_x);
+        y = min(max(y + vy, 0), max_y);
     }
 }
 
